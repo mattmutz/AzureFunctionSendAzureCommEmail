@@ -30,9 +30,15 @@ namespace AzureCommEmail.FormReceiver
                 string responseMessage = $"form request at " + requestTime.ToString();
                 log.LogInformation(responseMessage);
 
-                // your value here
+                // 1) your connection string here
                 string connectionString = "endpoint=https://your-endpoint.communication.azure.com/;accesskey=000000";
                 EmailClient emailClient = new EmailClient(connectionString);
+
+                // 2) your from email address here
+                var sender = "DoNotReply@00000000-0000-0000-0000-000000000000.azurecomm.net";
+
+                // 3) your email recipient value here
+                var recipient = "you@example.com";
 
                 var subject = "Web Form Submission";
                 var htmlContent = $"<html>Web form<br/>";
@@ -40,12 +46,6 @@ namespace AzureCommEmail.FormReceiver
                 htmlContent += $"<p>Email: {email}</p>";
                 htmlContent += $"<p>Message: {message}</p>";
                 htmlContent += "</body></html>";
-
-                // your value here
-                var sender = "DoNotReply@00000000-0000-0000-0000-000000000000.azurecomm.net";
-
-                // your value here
-                var recipient = "you@example.com";
 
                 try
                 {
